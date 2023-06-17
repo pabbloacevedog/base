@@ -1,0 +1,109 @@
+@import '../../../css/quasar.variables.styl'
+
+.toolbar_theme
+  background-color: $primary !important
+  color: white !important
+.toolbar_theme_dark
+  background: linear-gradient(45deg, #303f9f, #1976d2) !important;
+  color: white !important
+  .separador_toolbar
+    background: white
+
+.drawer_theme_white .q-drawer__content
+  background: linear-gradient(180deg, #drawer_theme_white, #drawer_theme_white);
+  .icon_menu
+	  color:#570758;
+  .menu-active-link
+    color:#570758 !important;
+    background: #fff !important;
+    border-radius: 10px !important;
+    margin: 0px 4px 0px 3px !important;
+    font-weight: bold
+
+  .q-item:hover
+    border-radius: 10px !important;
+    margin: 0px 4px 0px 3px !important;
+  .q-item
+    margin: 0px 4px 0px 3px !important;
+
+.drawer_theme_blue .q-drawer__content
+  background: linear-gradient(180deg, #FFFFFF, #F7F7F7);
+  .icon_menu
+	  color:#696969;
+  .menu-active-link
+    color:#fff !important
+    background: linear-gradient(45deg, #303f9f, #1976d2) !important
+    box-shadow: -3px 3px 10px 0px rgba(0,0,0,0.5) !important
+    border-radius: 10px !important
+    margin: 0px 4px 0px 3px !important
+    font-weight: bold
+
+  .q-item:hover
+    border-radius: 10px !important;
+    margin: 0px 4px 0px 3px !important;
+  .q-item
+    margin: 0px 4px 0px 3px !important;
+
+
+.full-height
+  height: -webkit-fill-available !important
+
+.tooltip-error
+  font-size: 12px
+  color:#FFFFFF
+  background: #F35D52
+
+.tooltip-menu
+  font-size: 12px
+  color:#FFFFFF
+
+.full-size
+  width: 100% !important
+
+.btn-dropdown-user
+  box-shadow: none
+  border-radius: 15px
+  height: 40px
+  margin-right: 7px
+  text-transform: capitalize
+
+.rotate360-animation
+  -webkit-transition: -webkit-transform 0.1s ease-in-out 0s
+  transition: transform 0.5s ease-in-out 0s
+
+.rotate360-animation:hover
+  -webkit-transform: rotate(360deg)
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  position: absolute;
+  transform: rotate(360deg)
+
+.btn-dropdown-user .q-btn__content .on-left
+  animation: spin 0.6s linear infinite
+  animation-play-state: paused
+
+.btn-dropdown-user:hover .q-btn__content .on-left
+  animation-play-state: running
+
+@keyframes spin
+  100% {transform: rotate(1turn)}
+
+.logo_toolbar
+	font-size: 28px
+	background: -webkit-gradient(linear, left top, left bottom, from(#1c074e), to(#570758))
+	-webkit-background-clip: text
+	vertical-align: middle !important
+	margin: 0px !important
+
+.q-item__section--side > .q-icon
+  font-size: 18px !important
+
+.icono_menu
+	margin-left: -8px
+
+// .espacio-derecho-menu
+// 	padding-right: 10%;
+
+.buscador
+	width: 250px;
