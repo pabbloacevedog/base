@@ -10,6 +10,9 @@ export /* async */ function getClientOptions(/* {app, router, ...} */ options) {
         uri: process.env.API_WS_URL,
         options: {
             reconnect: true,
+            connectionParams: {
+                authentication: user.authToken,
+              },
             connectionParams: () => {
                 const token = localStorage.getItem('token')
                 // return the headers to the context so httpLink can read them

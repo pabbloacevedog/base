@@ -1,0 +1,21 @@
+// Imports
+import Sequelize from 'sequelize'
+
+// App Imports
+import database from '../setup/database.js'
+import usuario from './usuario/index.js'
+const usuarioModel = require(path.join(__dirname, usuario))(database, Sequelize)
+const models = {
+    Usuario: usuarioModel,
+}
+
+Object.keys(models).forEach((modelName) => {
+	if ('associate' in models[modelName]) {
+		models[modelName].associate(models)
+	}
+})
+
+models.sequelize = database
+models.Sequelize = Sequelize
+
+export default models

@@ -12,7 +12,13 @@ export const useAuthStore = defineStore("auth", {
         async login(credentials) {
             const { login } = (
                 await useMutation({
-                    mutation: gql`mutation ($input: LoginInput!) { login(input: $input) { token } }`,
+                    mutation: gql`
+                    mutation ($input: LoginInput!) { 
+                        login(input: $input) 
+                        { 
+                            token 
+                        } 
+                    }`,
                     variables: { input: credentials },
                 })
             ).data;
@@ -53,7 +59,7 @@ export const useAuthStore = defineStore("auth", {
                 await useMutation({
                     mutation: gql`
                         mutation {
-                        logout
+                            logout
                         }
                     `,
                 })
