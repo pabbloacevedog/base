@@ -22,7 +22,7 @@ export async function buscar_usuario(parentValue, {usuario, word}, ) {
         "       us.avatar, "  +
         "       us.ruta_avatar "  +
         "   FROM "  +
-        "       shot_usuario us "  +
+        "       usuario us "  +
         "   WHERE "  +
         "       us.nombre LIKE :u || us.usuario LIKE :u LIKE :u "  ,
         {
@@ -54,7 +54,7 @@ export async function datos_usuario(parentValue, {usuario_id}, ) {
         "       lo.ruta_logo  as ruta_logo_empresa, " +
         "       lo.descripcion_empresa " +
         "   FROM    " +
-        "       shot_usuario us    " +
+        "       usuario us    " +
         "        " +
         "   LEFT JOIN shot_empresa lo ON us.empresa_id = lo.empresa_id     " +
         "   WHERE    " +

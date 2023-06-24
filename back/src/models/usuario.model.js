@@ -1,14 +1,11 @@
 // User
-import Sequelize, { Model } from 'sequelize';
+import { Model, Sequelize } from 'sequelize';
 const schema = {
 	usuario_id:{
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         allowNull: false,
         primaryKey: true
-	},
-	empresa_id: {
-		type: Sequelize.UUID
 	},
 	rut_usuario: {
 		type: Sequelize.STRING(20)
@@ -58,16 +55,16 @@ const  index =  {
     indexes:[
         {
             unique: false,
-            fields:['usuario_id','empresa_id','email']
+            fields:['usuario_id','email']
         }
     ]
 }
-export default (sequelize) => {
-	// class Usuario extends Model {
-	// 	static associate() {
-    //         this.belongsTo(sequelize.models.Empresa, { foreignKey: 'empresa_id' });
-	// 	}
-	// }
+module.exports = (sequelize) => {
+	class Usuario extends Model {
+		// static associate() {
+        //     this.belongsTo(sequelize.models.Empresa, { foreignKey: 'empresa_id' });
+		// }
+	}
 	Usuario.init(schema, {
         timestamps: true,
         createdAt: 'fecha_creacion',
@@ -77,4 +74,5 @@ export default (sequelize) => {
 	}, index);
 	return Usuario;
 };
+
 

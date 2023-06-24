@@ -30,14 +30,14 @@ export const BuscarUsuarioUsuario = {
     },
     resolve: buscar_por_usuario
 }
-// export const BuscarUsuarioCorreo = {
+// export const BuscarUsuarioemail = {
 //     type: UsuarioType,
 //     args: {
-//         correo: {
+//         email: {
 //             type: GraphQLString
 //         }
 //     },
-//     resolve: buscar_por_correo
+//     resolve: buscar_por_email
 // }
 export const ExisteUsuario = {
 	type: UsuarioType,

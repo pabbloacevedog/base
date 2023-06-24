@@ -21,8 +21,8 @@ export const CrearUsuario = {
 			name: 'nombre',
 			type: GraphQLString
 		},
-		correo: {
-			name: 'correo',
+		email: {
+			name: 'email',
 			type: GraphQLString
 		},
 		password: {
@@ -56,8 +56,8 @@ export const ActulizarUsuario = {
 			name: 'password',
 			type: GraphQLString
         },
-        correo: {
-			name: 'correo',
+        email: {
+			name: 'email',
 			type: GraphQLString
 		},
 		telefono: {

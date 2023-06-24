@@ -1,45 +1,45 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
+import fs from 'fs';
+import path from 'path';
+import { Sequelize, DataTypes } from 'sequelize';
+
 const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/database.json')[env];
-const models = {};
+import connection from '../middleware/database'
 
-let sequelize;
-if (config.use_env_variable) {
-    sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-    sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
-
+const models = {}
 fs
     .readdirSync(__dirname)
-    .filter(file => {
-        return (
-            file.indexOf('.') !== 0 &&
-            file !== basename &&
-            file.slice(-3) === '.js' &&
-            file.indexOf('.test.js') === -1
-        );
+    .filter((file) => {
+        const returnFile = (file.indexOf('.') !== 0)
+            && (file !== basename)
+            && (file.slice(-3) === '.js');
+        return returnFile;
     })
-    .forEach(file => {
-        const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    .forEach((file) => {
+        const model = require(path.join(__dirname, file))(connection, DataTypes)
         models[model.name] = model;
     });
 
 Object.keys(models).forEach(modelName => {
+    console.log(modelName)
     if (models[modelName].associate) {
         models[modelName].associate(models);
     }
 });
 
-models.sequelize = sequelize;
+models.sequelize = connection;
 models.Sequelize = Sequelize;
-
+// Removes all tables and recreates them (only available if env is not in production)
+// const user = models.Usuario.create({
+//     name: 'Pablo',
+//     lastanem: 'Acevedo',
+//     username: 'pablo_ag',
+//     password: '$2b$10$9AFiWS.4zfpIdDc9aEcLheJN4CyLikUO86uEPgQlkB8SbuO8myGmO',
+//     email: 'pablo.acevedo.g@gmail.com',
+//     avatar: '../statics/profile.jpg',
+//     review: '	Desarrollador/developer 📟 💻 🎮 📱'
+// });
 export default models;
 
 

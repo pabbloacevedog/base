@@ -11,7 +11,7 @@
 
 const { configure } = require('quasar/wrappers');
 const path = require('path');
-
+const envparsers = require ('./src/config/envparser')
 module.exports = configure(function (/* ctx */) {
     return {
         eslint: {
@@ -69,7 +69,7 @@ module.exports = configure(function (/* ctx */) {
 
             // publicPath: '/',
             // analyze: true,
-            // env: {},
+            env: envparsers(),
             // rawDefine: {}
             // ignorePublicFolder: true,
             // minify: false,
@@ -79,7 +79,14 @@ module.exports = configure(function (/* ctx */) {
             extendViteConf(viteConf, { isServer, isClient }) {
                 Object.assign(viteConf.resolve.alias, {
                     src: path.join(__dirname, './src'),
-                    components: path.join(__dirname, './src/components')
+                    components: path.join(__dirname, './src/components'),
+                    'vue$': 'vue/dist/vue.esm.js',
+					'@': 'src',
+                    '@css': 'src/css',
+                    '@utils' : 'src/utils',
+                    '@pages' : 'src/pages',
+                    '@components' : 'src/components',
+                    '@layouts' : 'src/layouts'
                 })
             },
             // viteVuePluginOptions: {},

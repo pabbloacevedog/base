@@ -1,7 +1,8 @@
 // Imports
 import express from 'express'
 import { createServer } from 'http';
-
+import dotenv from 'dotenv';
+dotenv.config()
 // App Imports
 import setupLoadModules from './middleware/loadModules.js'
 import setupGraphQL from './middleware/graphql.js'

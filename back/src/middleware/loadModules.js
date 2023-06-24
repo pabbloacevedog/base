@@ -4,13 +4,12 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import morgan from 'morgan'
-import config from '../config/config.json' 
 import helmet from 'helmet'
 
 // Load express modules
 export default function (server) {
     console.info('SETUP - Cargando modulos...')
-    console.info('SETUP - Acceso a cliente: ' + config.client )
+    console.info('SETUP - Acceso a cliente: ' + process.env.CLIENT )
 	// Enable CORS
 	server.use(cors())
 	server.use(express.static('public'));
@@ -19,7 +18,17 @@ export default function (server) {
 
     // configurar helmet para dev y prod
 
-    
+    const isDevelopment = process.env.ENV === 'development'
+
+    // server.use(
+    //   helmet({
+    //     crossOriginEmbedderPolicy: !isDevelopment,
+    //     contentSecurityPolicy: !isDevelopment,
+	// 	dnsPrefetchControl: !isDevelopment,
+	// 	frameguard: !isDevelopment,
+	// 	ieNoOpen: !isDevelopment,
+    //   }),
+    // )
 	// server.use(helmet({
 	// 	dnsPrefetchControl: false,
 	// 	frameguard: false,
