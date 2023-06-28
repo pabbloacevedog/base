@@ -6,9 +6,9 @@ const { DB_FORCE_RESTART } = process.env;
 export default async function (server) {
     console.info('SETUP - Sincronizando tablas de la base de datos...')
     // Crear tablas
-    const sequelizeOptions = { logging: config.logging,alter: true  };
+    const sequelizeOptions = { logging: config.logging, alter: true };
     if (DB_FORCE_RESTART === 'true' && process.env.ENV !== 'production') {
-        sequelizeOptions.force = true;
+        sequelizeOptions.alter = true;
     }
     models.sequelize.sync(sequelizeOptions).then(() => {
         console.info('INFO  - Base de datos sincronizada correctamente.')
@@ -28,6 +28,6 @@ export default async function (server) {
             console.error('ERROR - Servidor no iniciado.' + error)
             process.exit();
         })
-        console.log('start',models.models)
+    console.log('start', models.models)
 
 }

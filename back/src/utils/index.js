@@ -11,12 +11,13 @@ const tokenIsNotValid = (connectionParams) => {
 };
 const getDynamicContext = async (ctx, msg, args) => {
     // ctx is the graphql-ws Context where connectionParams live
-    if (ctx.connectionParams.authentication) {
-        const currentUser = await findUser(ctx.connectionParams.authentication);
-        return { currentUser };
-    }
+    // console.log('getDynamicContext', ctx.connectionParams)
+    // if (ctx.connectionParams.authentication) {
+    //     const currentUser = await findUser(ctx.connectionParams.authentication);
+    //     return { currentUser };
+    // }
     // Otherwise let our resolvers know we don't have a current user
-    return { currentUser: null };
+    return { currentUser: true };
 };
 // Set up ApolloServer.
 module.exports = { getDynamicContext, tokenIsNotValid };

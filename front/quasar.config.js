@@ -31,6 +31,8 @@ module.exports = configure(function (/* ctx */) {
         // https://v2.quasar.dev/quasar-cli/boot-files
         boot: [
             'i18n',
+            'apollo',
+            'global',
 
         ],
 
@@ -90,7 +92,6 @@ module.exports = configure(function (/* ctx */) {
                 })
             },
             // viteVuePluginOptions: {},
-
             vitePlugins: [
                 ['@intlify/vite-plugin-vue-i18n', {
                     // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
@@ -127,7 +128,7 @@ module.exports = configure(function (/* ctx */) {
             // directives: [],
 
             // Quasar plugins
-            plugins: []
+            plugins: ['Loading','Notify']
         },
 
         // animations: 'all', // --- includes all animations
